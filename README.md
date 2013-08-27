@@ -1,4 +1,4 @@
-# Khan Academy Exercises
+# Forked from Khan Academy Exercises
 
 Copyright (c) 2013 Khan Academy
 
@@ -6,34 +6,37 @@ The exercise framework is [MIT licensed](http://en.wikipedia.org/wiki/MIT_Licens
 
 The exercises are under a [Creative Commons by-nc-sa license](http://creativecommons.org/licenses/by-nc-sa/3.0/).
 
-## Exercise Framework
+The additional sources added by xclams are [MIT licensed](http://en.wikipedia.org/wiki/MIT_License).
 
-Khan Academy has created a generic framework for building exercises. This framework, together with the exercises themselves, can be used completely independently of the Khan Academy application.
+# Original Repository
 
-The framework exists in two components:
+For original information/readme of the Kahn-Exercise Framework please see:
 
-* An HTML markup for specifying exercises.
-* A jQuery plugin for generating a usable, interactive, exercise from the HTML markup.
+[https://github.com/xclams/khan-exercises](https://github.com/xclams/khan-exercises)
+
+# Why fork?
+
+This fork was done, because we needed a possibility to integrate the Khan-Exercise Framework into the Curriki build
+process. Since this is a maven powered process, we decided to handle this kind of dependency ("frontend dependency")
+into.
 
 
-## Using the Framework Locally
+# Usage
 
-You need to serve the files from some sort of a server. You can't just open the files directly in a browser. For example:
+This module is a part of the Curriki build process. However you should be able to use it in any web
+project with a maven powered build process.
+
+## Build & Installation
+
+To build the packages in the working directory run:
 
     cd khan-exercises
-    python -m SimpleHTTPServer # or python3 -m http.server
+    mvn clean
+    mvn package
 
-Now if you open your browser to `http://localhost:8000` (or `http://127.0.0.1:8000/`) you should see the contents of the `khan-exercises` directory. Navigate to the `exercises` subfolder, and an HTML file under there to see an exercise.
+To install the package into your local repository run:
 
+    cd khan-exercises
+    mvn clean
+    mvn install
 
-## Writing Exercises
-
-The process for writing exercises is rather well documented. More information about this process can be found in the [Khan Exercises wiki](https://github.com/Khan/khan-exercises/wiki). Specifically:
-
-* [How to Get Involved](https://github.com/Khan/khan-exercises/wiki/Getting-Involved)
-* [How to Write Exercises](https://github.com/Khan/khan-exercises/wiki/Writing-Exercises:-Home)
-* [How to Test Exercises](https://github.com/Khan/khan-exercises/wiki/Testing-Exercises)
-
-## More
-
-If you're passionate about creating these exercises and want to apply to be a full-time exercise developer at the Khan Academy, [please do so](http://hire.jobvite.com/CompanyJobs/Careers.aspx?c=qd69Vfw7&page=Job%20Description&j=ohjSVfw7).
