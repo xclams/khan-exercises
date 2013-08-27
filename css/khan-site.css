@@ -3348,7 +3348,6 @@ span.youTube:hover {
 
 #container.single-exercise {
     overflow: visible;
-    min-width: 950px;
 }
 #container .dashboard-header.single-exercise {
     border: 1px solid #ccc;
@@ -4442,8 +4441,6 @@ body {
   color: #444;
   line-height: 22px;
   /* extend background to cover #page-container on horizontal scroll */
-
-  min-width: 1000px;
 }
 #outer-wrapper {
   min-height: 100%;
@@ -12258,7 +12255,7 @@ footer .footer-scroll-cue {
 }
 
 div.exercises-card {
-    width: 753px;
+    width: 540px;
 }
 
 body.debug #workarea,
