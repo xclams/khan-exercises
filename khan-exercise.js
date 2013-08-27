@@ -216,7 +216,7 @@ var Khan = (function() {
     // Promise that gets resolved when MathJax is loaded
     mathJaxLoaded,
 
-    urlBase = localMode ? "../" : "/khan-exercises/",
+    urlBase = localMode ? "/xwiki/js/curriki-khan-exercises/" : "/khan-exercises/",
 
     // In local mode, we use khan-exercises local copy of the /images
     // directory.  But in production (on www.khanacademy.org), we use
@@ -237,17 +237,15 @@ var Khan = (function() {
     // Add in the site stylesheets
     if (localMode) {
         (function() {
-            var addLink = function(url) {
-                var link = document.createElement("link");
-                link.rel = "stylesheet";
-                link.href = urlBase + url;
-                document.getElementsByTagName("head")[0].appendChild(link);
-            };
+            var link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = urlBase + "css/khan-site.css";
+            document.getElementsByTagName("head")[0].appendChild(link);
 
-            addLink("css/khan-site.css");
-            addLink("css/khan-exercise.css");
-            addLink("local-only/katex/katex.less.css");
-            addLink("local-only/katex/fonts/fonts.css");
+            link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = urlBase + "css/khan-exercise.css";
+            document.getElementsByTagName("head")[0].appendChild(link);
         })();
     }
 
@@ -611,13 +609,13 @@ var Khan = (function() {
                 e.preventDefault();
 
                 var report = $("#issue").css("display") !== "none",
-                    form = $("#issue .issue-form").css("display") !== "none";
+                    form = $("#issue form").css("display") !== "none";
 
                 if (report && form) {
                     $("#issue").hide();
                 } else if (!report || !form) {
                     $("#issue-status").removeClass("error").html(issueIntro);
-                    $("#issue, #issue .issue-form").show();
+                    $("#issue, #issue form").show();
                     $("html, body").animate({
                         scrollTop: $("#issue").offset().top
                     }, 500, function() {
@@ -635,11 +633,11 @@ var Khan = (function() {
             });
 
             // Submit an issue.
-            $("#issue .issue-form input:submit").click(function(e) {
+            $("#issue form input:submit").click(function(e) {
                 e.preventDefault();
 
                 // don't do anything if the user clicked a second time quickly
-                if ($("#issue .issue-form").css("display") === "none") return;
+                if ($("#issue form").css("display") === "none") return;
 
                 var framework = Exercises.getCurrentFramework(),
                     issueInfo = framework === "khan-exercises" ?
@@ -756,7 +754,7 @@ var Khan = (function() {
                     dataType: "json",
                     success: function(data) {
                         // hide the form
-                        $("#issue .issue-form").hide();
+                        $("#issue form").hide();
 
                         // show status message
                         $("#issue-status").removeClass("error")
@@ -810,35 +808,33 @@ var Khan = (function() {
             (new Date().getTime() & 0xffffffff);
 
     if (localMode) {
-        var lang = Khan.query.lang || "en-US";
-
         // Load in jQuery and underscore, as well as the interface glue code
         // TODO(cbhl): Don't load history.js if we aren't in readOnly mode.
         var initScripts = [
-                "../local-only/jquery.js",
-                "../local-only/jquery-migrate-1.1.1.js",
-                "../local-only/jquery.ui.core.js",
-                "../local-only/jquery.ui.widget.js",
-                "../local-only/jquery.ui.mouse.js",
-                "../local-only/jquery.ui.position.js",
-                "../local-only/jquery.ui.effect.js",
-                "../local-only/jquery.ui.effect-shake.js",
-                "../local-only/jquery.ui.button.js",
-                "../local-only/jquery.ui.draggable.js",
-                "../local-only/jquery.ui.resizable.js",
-                "../local-only/jquery.ui.dialog.js",
-                "../local-only/jquery.qtip.js",
-                "../local-only/underscore.js",
-                "../local-only/kas.js",
-                "../local-only/jed.js",
-                "../local-only/i18n.js",
-                "../local-only/localeplanet/icu." + lang + ".js",
-                "../local-only/i18n.js",
-                "../local-only/katex/katex.js",
-                "../exercises-stub.js",
-                "../history.js",
-                "../interface.js",
-                "../related-videos.js"
+                "/xwiki/js/curriki-khan-exercises/local-only/jquery.js",
+                "/xwiki/js/curriki-khan-exercises/local-only/jquery-migrate-1.1.1.js",
+                "/xwiki/js/curriki-khan-exercises/local-only/jquery.ui.core.js",
+                "/xwiki/js/curriki-khan-exercises/local-only/jquery.ui.widget.js",
+                "/xwiki/js/curriki-khan-exercises/local-only/jquery.ui.mouse.js",
+                "/xwiki/js/curriki-khan-exercises/local-only/jquery.ui.position.js",
+                "/xwiki/js/curriki-khan-exercises/local-only/jquery.ui.effect.js",
+                "/xwiki/js/curriki-khan-exercises/local-only/jquery.ui.effect-shake.js",
+                "/xwiki/js/curriki-khan-exercises/local-only/jquery.ui.button.js",
+                "/xwiki/js/curriki-khan-exercises/local-only/jquery.ui.draggable.js",
+                "/xwiki/js/curriki-khan-exercises/local-only/jquery.ui.resizable.js",
+                "/xwiki/js/curriki-khan-exercises/local-only/jquery.ui.dialog.js",
+                "/xwiki/js/curriki-khan-exercises/local-only/jquery.qtip.js",
+                "/xwiki/js/curriki-khan-exercises/local-only/underscore.js",
+                "/xwiki/js/curriki-khan-exercises/local-only/jed.js",
+                "/xwiki/js/curriki-khan-exercises/local-only/i18n.js",
+                // TODO(csilvers): I18N: pick the file based on lang=XX param
+                "/xwiki/js/curriki-khan-exercises/local-only/localeplanet/icu.en-US.js",
+                "/xwiki/js/curriki-khan-exercises/local-only/i18n.js",
+                "/xwiki/js/curriki-khan-exercises/exercises-stub.js",
+                "/xwiki/js/curriki-khan-exercises/history.js",
+                "/xwiki/js/curriki-khan-exercises/interface.js",
+                "/xwiki/js/curriki-khan-exercises/related-videos.js",
+                "/xwiki/js/curriki-khan-exercises/exercise-event-logger.js"
             ];
 
         (function loadInitScripts() {
@@ -846,11 +842,13 @@ var Khan = (function() {
                 var src = initScripts.shift();
                 Khan.loadScript(src, loadInitScripts);
             } else {
-                onjQueryLoaded();
+
+              onjQueryLoaded();
             }
         })();
     } else {
-        onjQueryLoaded();
+
+      onjQueryLoaded();
     }
 
     function onjQueryLoaded() {
@@ -1346,7 +1344,8 @@ var Khan = (function() {
         if (validator) {
             // Have MathJax redo the font metrics for the solution area
             // (ugh, this is gross)
-            KhanUtil.processAllMath($("#solutionarea")[0], true);
+            MathJax.Hub.Queue(["Reprocess", MathJax.Hub,
+                    $("#solutionarea")[0]]);
 
             // Focus the first input
             // Use .select() and on a delay to make IE happy
@@ -1404,8 +1403,12 @@ var Khan = (function() {
                 examples.append("<li>" + example + "</li>");
             });
 
+            examples.children().runModules();
+
             $("#examples-show").qtip({
                 content: {
+                    // TODO(alpert): I'd imagine MathJax is unhappy about this
+                    // removal
                     text: examples.remove(),
                     prerender: true
                 },
@@ -1420,13 +1423,7 @@ var Khan = (function() {
                         length: 0
                     }
                 },
-                hide: {delay: 0},
-                events: {
-                    render: function() {
-                        // Only run the modules when the qtip is actually shown
-                        examples.children().runModules();
-                    }
-                }
+                hide: {delay: 0}
             });
         } else {
             $("#examples-show").hide();
@@ -1715,7 +1712,7 @@ var Khan = (function() {
                 if ($.trim(instr) !== "") {
                     lastInstr = instr;
                     row = $("<div>").addClass("calc-row");
-                    indiv = $("<div>").addClass("input").text(instr.replace(/pi/g, "\u03c0")).appendTo(row);
+                    indiv = $("<div>").addClass("input").text(instr).appendTo(row);
                     try {
                         output = ans = Calculator.calculate(instr, ans);
                         if (typeof output === "number") {
@@ -1735,7 +1732,7 @@ var Khan = (function() {
                 }
 
                 input.val("");
-                history.scrollTop(history[0].scrollHeight);
+                input[0].scrollIntoView(false);
             };
 
             input.on("keyup", function(e) {
