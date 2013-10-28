@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.curriki</groupId>
+    <artifactId>curriki-khan-exercises</artifactId>
+    <version>1.0</version>
+    <description>
+        The Curriki-Khan-Exercises maven module. Created for purposes of integration into the Curriki platform.
+        This is a maven wrapper around the khan-exercises code (https://github.com/Khan/khan-exercises),
+        based on a fork (https://github.com/xclams/khan-exercises).
+    </description>
+
+    <!-- Add a local file repository as "fake" to be able to deploy build artifacts to github -->
+    <distributionManagement>
+        <repository>
+            <id>internal.repo</id>
+            <name>Temporary Staging Repository</name>
+            <url>file://${project.build.directory}/mvn-repo</url>
+        </repository>
+    </distributionManagement>
+
+    <properties>
+        <!-- github server corresponds to entry in ~/.m2/settings.xml
+             where you need to add something like:
+        <servers>
+            <server>
+                <id>github</id>
+                <username>GITHUB_USER</username>
+                <password>GITHUB_PASSWORD</password>
+            </server>
+        </servers>
+        -->
+        <github.global.server>github</github.global.server>
+    </properties>
+
+    <!-- Try to only include the files we need -->
+    <build>
+        <resources>
+            <resource>
+                <directory>local-only</directory>
+                <targetPath>local-only</targetPath>
+            </resource>
+            <resource>
+                <directory>css</directory>
+                <targetPath>css</targetPath>
+            </resource>
+            <resource>
+                <directory>local-only</directory>
+                <targetPath>local-only</targetPath>
+            </resource>
+            <resource>
+                <directory>images</directory>
+                <targetPath>images</targetPath>
+            </resource>
+            <resource>
+                <directory>exercises</directory>
+                <targetPath>exercises</targetPath>
+                <includes>
+                    <include>khan-exercise.html</include>
+                    <include>khan-site.html</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>.</directory>
+                <includes>
+                    <include>khan-exercise.js</include>
+                    <include>exercises-stub.js</include>
+                    <include>interface.js</include>
+                    <include>history.js</include>
+                    <include>related-videos.js</include>
+                    <include>exercise-event-logger.js</include>
+                    <include>example-execise.html</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.8</version>
+                <configuration>
+                    <!-- git commit message -->
+                    <message>Maven artifacts for ${project.version}</message>
+
+                    <!-- disable webpage processing -->
+                    <noJekyll>true</noJekyll>
+
+                    <!-- matches distribution management repository url above -->
+                    <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
+
+                    <!-- remote branch name -->
+                    <branch>refs/heads/mvn-repo</branch>
+                    <includes><include>**/*</include></includes>
+
+                    <!-- github repo name -->
+                    <repositoryName>khan-exercises</repositoryName>
+
+                    <!-- github username  -->
+                    <repositoryOwner>xclams</repositoryOwner>
+                </configuration>
+                <executions>
+                    <!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
+                    <execution>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <phase>deploy</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
