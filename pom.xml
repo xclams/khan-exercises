@@ -6,7 +6,7 @@
 
     <groupId>org.curriki</groupId>
     <artifactId>curriki-khan-exercises</artifactId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
     <description>
         The Curriki-Khan-Exercises maven module. Created for purposes of integration into the Curriki platform.
         This is a maven wrapper around the khan-exercises code (https://github.com/Khan/khan-exercises),
@@ -62,6 +62,10 @@
                     <include>khan-exercise.html</include>
                     <include>khan-site.html</include>
                 </includes>
+            </resource>
+            <resource>
+                <directory>utils</directory>
+                <targetPath>utils</targetPath>
             </resource>
             <resource>
                 <directory>.</directory>
