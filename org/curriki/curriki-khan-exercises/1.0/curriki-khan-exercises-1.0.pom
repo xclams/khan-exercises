@@ -64,6 +64,10 @@
                 </includes>
             </resource>
             <resource>
+                <directory>utils</directory>
+                <targetPath>utils</targetPath>
+            </resource>
+            <resource>
                 <directory>.</directory>
                 <includes>
                     <include>khan-exercise.js</include>
