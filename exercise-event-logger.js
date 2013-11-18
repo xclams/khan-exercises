@@ -5,69 +5,69 @@
 
 $(document).ready(function(){
 	$(Exercises).on("problemTemplateRendered", function(event){
-		alert("Event triggered: problemTemplateRendered \n" +
-			  "UserActivityLog: \n" + stringifyUserActivityLog());
+//		alert("Event triggered: problemTemplateRendered \n" +
+//			  "UserActivityLog: \n" + stringifyUserActivityLog());
 	});
 
 
 	$(Exercises).on("newProblem", function(event){
-		alert("Event triggered: newProblem \n" +
-			  "UserActivityLog: \n" + stringifyUserActivityLog());
+//		alert("Event triggered: newProblem \n" +
+//			  "UserActivityLog: \n" + stringifyUserActivityLog());
 	});
 
 
 	$(Exercises).on("problemDone", function(event){
-		alert("Event triggered: problemDone \n" +
-			  "UserActivityLog: \n" + stringifyUserActivityLog());
+//		alert("Event triggered: problemDone \n" +
+//			  "UserActivityLog: \n" + stringifyUserActivityLog());
 	});
 
 
 	$(Exercises).on("checkAnswer", function(event){
-		alert("Event triggered: checkAnswer \n" +
-			  "UserActivityLog: \n" + stringifyUserActivityLog());
+//		alert("Event triggered: checkAnswer \n" +
+//			  "UserActivityLog: \n" + stringifyUserActivityLog());
 	});
 
 
 
 	$(Exercises).on("hintShown", function(event){
-		alert("Event triggered: hintShown \n" +
-			  "UserActivityLog: \n" + stringifyUserActivityLog());
+//		alert("Event triggered: hintShown \n" +
+//			  "UserActivityLog: \n" + stringifyUserActivityLog());
 	});
 
 
 	$(Exercises).on("readyForNextProblem", function(event){
-		alert("Event triggered: readyForNextProblem \n" +
-			  "UserActivityLog: \n" + stringifyUserActivityLog());
+//		alert("Event triggered: readyForNextProblem \n" +
+//			  "UserActivityLog: \n" + stringifyUserActivityLog());
 	});
 
 
 	$(Exercises).on("warning", function(event){
-		alert("Event triggered: warning \n" +
-			  "UserActivityLog: \n" + stringifyUserActivityLog());
+//		alert("Event triggered: warning \n" +
+//			  "UserActivityLog: \n" + stringifyUserActivityLog());
 	});
 
 
 	$(Exercises).on("upcomingExercise", function(event){
-		alert("Event triggered: upcomingExercise \n" +
-			  "UserActivityLog: \n" + stringifyUserActivityLog());
+//		alert("Event triggered: upcomingExercise \n" +
+//			  "UserActivityLog: \n" + stringifyUserActivityLog());
 	});
 
 
 	$(Exercises).on("gotoNextProblem", function(event){
-		alert("Event triggered: gotoNextProblem \n" +
-			  "UserActivityLog: \n" + stringifyUserActivityLog());
+//		alert("Event triggered: gotoNextProblem \n" +
+//			  "UserActivityLog: \n" + stringifyUserActivityLog());
 	});
 
 
 	$(Exercises).on("updateUserExercise", function(event){
-		alert("Event triggered: updateUserExercise \n" +
-			  "UserActivityLog: \n" + stringifyUserActivityLog());
+//		alert("Event triggered: updateUserExercise \n" +
+//			  "UserActivityLog: \n" + stringifyUserActivityLog());
 	});
 
 
 	$(Exercises).on("clearExistingProblem", function(event){
-		alert("Event triggered: clearExistingProblem \n" +
-			  "UserActivityLog: \n" + stringifyUserActivityLog());
+//		alert("Event triggered: clearExistingProblem \n" +
+//			  "UserActivityLog: \n" + stringifyUserActivityLog());
 	});
 
 	function stringifyUserActivityLog(){
