@@ -3,7 +3,7 @@
 }
 
 .icon-check-empty {
-  color: #101011;
+  color: #b1b1b1;
 }
 
 .practice-exercise-topic-text {
@@ -23,9 +23,15 @@
 }
 
 div.exercises-card {
-  width: 650px;
+  width: 750px;
 }
 
 body.debug #extras .debug-mode {
     display: none;
+}
+
+#answer_area_wrap {
+    float: right;
+    margin-right: 10px;
+    width: 29%;
 }
