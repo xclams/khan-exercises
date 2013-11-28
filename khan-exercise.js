@@ -246,6 +246,16 @@ var Khan = (function() {
             link.rel = "stylesheet";
             link.href = urlBase + "css/khan-exercise.css";
             document.getElementsByTagName("head")[0].appendChild(link);
+
+            link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = urlBase + "font-awesome/css/font-awesome.css";
+            document.getElementsByTagName("head")[0].appendChild(link);
+
+            link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = urlBase + "css/khan-exercise-curriki.css";
+            document.getElementsByTagName("head")[0].appendChild(link);
         })();
     }
 
@@ -2109,7 +2119,7 @@ var Khan = (function() {
 
     function injectTestModeSite(html, htmlExercise) {
         $("body").prepend(html);
-        $("#container .exercises-header h2").append(document.title);
+        //$("#container .exercises-header h2").append(document.title);
         $("#container .exercises-body .current-card-contents").html(
                 htmlExercise);
 

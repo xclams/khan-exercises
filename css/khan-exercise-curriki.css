@@ -1,0 +1,31 @@
+.icon-check {
+  color: green;
+}
+
+.icon-check-empty {
+  color: #101011;
+}
+
+.practice-exercise-topic-text {
+  padding-left: 5px;
+}
+
+#exerciseDone {
+  display: none;
+  color: green;
+}
+
+.section-headline {
+}
+
+#extras {
+  display: none;
+}
+
+div.exercises-card {
+  width: 650px;
+}
+
+body.debug #extras .debug-mode {
+    display: none;
+}

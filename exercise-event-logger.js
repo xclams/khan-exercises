@@ -17,14 +17,35 @@ $(document).ready(function(){
 
 
 	$(Exercises).on("problemDone", function(event){
-//		alert("Event triggered: problemDone \n" +
-//			  "UserActivityLog: \n" + stringifyUserActivityLog());
+    var log = Exercises.userActivityLog;
+    var lastActivty = log[log.length - 1][0];
+    var emptyCheckIcons = $("#check-icons").children(".icon-check-empty");
+    var isComplete = (emptyCheckIcons.length == 1 && lastActivty == "correct-activity") || emptyCheckIcons.length == 0;
+    var hasNotified = $("#exerciseDone").css("display") != "none";
+
+    if(isComplete && !hasNotified){
+      alert("You are done");
+      $("#doExercise").css("display","none")
+      $("#exerciseDone").css("display","inline")
+    }
+
+    var nextEmptyCheckIcon = emptyCheckIcons[0];
+    if(nextEmptyCheckIcon != undefined){
+      nextEmptyCheckIcon.setAttribute("class","icon-check");
+    }
 	});
 
 
 	$(Exercises).on("checkAnswer", function(event){
-//		alert("Event triggered: checkAnswer \n" +
-//			  "UserActivityLog: \n" + stringifyUserActivityLog());
+    var log = Exercises.userActivityLog;
+    var lastActivty = log[log.length - 1][0];
+    var hasNotified = $("#exerciseDone").css("display") != "none";
+
+    if(lastActivty == "incorrect-activity" && !hasNotified){
+      $("#check-icons").children(".icon-check").each(function(element){
+        this.setAttribute("class","icon-check-empty");
+      });
+    }
 	});
 
 
