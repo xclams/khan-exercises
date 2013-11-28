@@ -79,6 +79,10 @@
                     <include>example-execise.html</include>
                 </includes>
             </resource>
+            <resource>
+                <directory>font-awesome</directory>
+                <targetPath>font-awesome</targetPath>
+            </resource>
         </resources>
 
         <plugins>
