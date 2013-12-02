@@ -5,8 +5,8 @@
 
 $(document).ready(function(){
 	$(Exercises).on("problemTemplateRendered", function(event){
-//		alert("Event triggered: problemTemplateRendered \n" +
-//			  "UserActivityLog: \n" + stringifyUserActivityLog());
+    var iframeId = $.getUrlVar('iframeId');
+    $(window.parent.document.getElementById(iframeId)).height(document.body.scrollHeight+50);
 	});
 
 
@@ -51,8 +51,8 @@ $(document).ready(function(){
 
 
 	$(Exercises).on("hintShown", function(event){
-//		alert("Event triggered: hintShown \n" +
-//			  "UserActivityLog: \n" + stringifyUserActivityLog());
+    var iframeId = $.getUrlVar('iframeId');
+		$(window.parent.document.getElementById(iframeId)).height(document.body.scrollHeight+50);
 	});
 
 

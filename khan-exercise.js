@@ -834,6 +834,7 @@ var Khan = (function() {
                 "/xwiki/js/curriki-khan-exercises/local-only/jquery.ui.resizable.js",
                 "/xwiki/js/curriki-khan-exercises/local-only/jquery.ui.dialog.js",
                 "/xwiki/js/curriki-khan-exercises/local-only/jquery.qtip.js",
+                "/xwiki/js/curriki-khan-exercises/local-only/jquery.urlparams.plugin.js",
                 "/xwiki/js/curriki-khan-exercises/local-only/underscore.js",
                 "/xwiki/js/curriki-khan-exercises/local-only/jed.js",
                 "/xwiki/js/curriki-khan-exercises/local-only/i18n.js",
