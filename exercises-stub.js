@@ -4,7 +4,7 @@
 var Exercises = {
     localMode: true,
 
-    khanExercisesUrlBase: "/xwiki/js/curriki-khan-exercise/",
+    khanExercisesUrlBase: "/xwiki/js/curriki-khan-exercises/",
 
     getCurrentFramework: function() {
         return "khan-exercises";
