@@ -24,7 +24,7 @@ $(document).ready(function(){
     var hasNotified = $("#exerciseDone").css("display") != "none";
 
     if(isComplete && !hasNotified){
-      alert("You are done");
+      alert("You got 5 correct in a row. Good job!");
       $("#doExercise").css("display","none")
       $("#exerciseDone").css("display","inline")
     }
