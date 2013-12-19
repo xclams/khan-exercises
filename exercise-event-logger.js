@@ -26,7 +26,7 @@ $(document).ready(function(){
     if(isComplete && !hasNotified){
       try{
         top.jQuery("#khan-exercise-success-modal").modal("show");
-        top.Curriki.logEvent(['Khan-Exercise', 'exercise-complete'])
+        top.Curriki.logEvent(['Khan-Exercise', 'exercise-complete', location.pathname])
       } catch(exception){
         console.log(exception);
         alert("You got 5 correct in a row. Good job!");
