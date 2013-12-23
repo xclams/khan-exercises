@@ -23,7 +23,7 @@
 }
 
 div.exercises-card {
-  width: 750px;
+  width: 650px;
 }
 
 body.debug #extras .debug-mode {
@@ -33,5 +33,4 @@ body.debug #extras .debug-mode {
 #answer_area_wrap {
     float: right;
     margin-right: 10px;
-    width: 29%;
 }
